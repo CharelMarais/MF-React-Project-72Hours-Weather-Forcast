@@ -73,6 +73,7 @@ export function returnDayOfTheWeek(day: number): string {
   }
 }
 
+// set the single object related to the current time
 export function setCurrentWeatherObject(
   weatherData: WeatherDateSeries[],
   time: number,
@@ -95,18 +96,21 @@ export function setCurrentWeatherObject(
   return cityWeather;
 }
 
+// max temp from temp array
 export function calculateMaxTemp(weatherData: WeatherDateSeries[]): number {
   const temperatureSet: number[] = [];
   weatherData.map((data) => temperatureSet.push(data.temp2m));
   return Math.min(...temperatureSet);
 }
 
+// min temp from temp array
 export function calculateMinTemp(weatherData: WeatherDateSeries[]): number {
   const temperatureSet: number[] = [];
   weatherData.map((data) => temperatureSet.push(data.temp2m));
   return Math.max(...temperatureSet);
 }
 
+// return the date
 export function setTimePointDate(
   weatherPointData: WeatherDateSeries,
   selectedCity: City
@@ -138,6 +142,7 @@ export function setTimePointDate(
   return dateString;
 }
 
+// return time as hours
 export function setTimePointHours(
   weatherPointData: WeatherDateSeries,
   selectedCity: City
@@ -151,13 +156,14 @@ export function setTimePointHours(
   );
   return currentDate.getHours();
 }
-
+// function to add hours to any date
 function addHours(date: Date, hours: number): Date {
   date.setHours(date.getHours() + hours);
 
   return date;
 }
 
+// Time string output with am or pm
 export function setTimePointString(time: number) {
   let timeString;
   if (time > 12) {
